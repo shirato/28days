@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+	<title>Amazon Cognito Starter Code</title>
+</head>
+<body>
+
+<h1>Amazon Cognito Starter Code</h1>
+
+
+
+<p>If you haven't already, download and install the <a href="http://aws.amazon.com/mobile/">AWS Mobile SDK</a>.</p>
+
+<ul>
+	<li><a href="#android">Android</a></li>
+	<li><a href="#ios">iOS</a></li>
+</ul>
+
+<hr>
+
+<h2><a name="android">Android Starter Code</a></h2>
+
+               			<p><strong>Step 1: Import the Cognito libraries into your class:</strong></p>
+                			<pre class="cog-code">import com.amazonaws.android.auth.CognitoCredentialsProvider;</pre>
+
+                			<p><strong>Step 2: Initialize the Cognito client:</strong></p>
+                   			<pre class="cog-code">CognitoCredentialsProvider cognitoProvider = new CognitoCredentialsProvider(
+    myActivity.getContext(), // get the context for the current activity
+    "324549020557",
+    "us-east-1:9be90663-dfb3-4b34-9871-4e83ef88d19a",
+    "arn:aws:iam::324549020557:role/Cognito_28DaysUnauth_DefaultRole",
+    "arn:aws:iam::324549020557:role/Cognito_28DaysAuth_DefaultRole"
+);</pre>
+
+                			<p><strong>Step 3: Retrieve your identity ID:</strong></p>
+                			<pre class="cog-code">cognitoProvider.getIdentityId();</pre>
+
+<hr>
+
+<h2><a name="ios">iOS Starter Code</a></h2>
+
+
+ 	<p><strong>Step 1: Import the Cognito header files:</strong></p>
+                			
+		<p>If you a using the SDK in a framework format:</p>
+  		<pre class="cog-code">#import &lt;AWSiOSSDKv2/AWSCore.h&gt;</pre>
+
+							<p>If you are using the SDK in CocoaPods:</p>
+                			<pre class="cog-code">#import "AWSCore.h"</pre>
+
+                			<p><strong>Step 2: Initialize the Cognito client:</strong></p>
+                    		<pre class="cog-code">AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider 
+   credentialsWithRegionType:AWSRegionUSEast1
+   accountId:@"324549020557"
+   identityPoolId:@"us-east-1:9be90663-dfb3-4b34-9871-4e83ef88d19a"
+   unauthRoleArn:@"arn:aws:iam::324549020557:role/Cognito_28DaysUnauth_DefaultRole"
+   authRoleArn:@"arn:aws:iam::324549020557:role/Cognito_28DaysAuth_DefaultRole"];
+      
+AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
+   credentialsProvider:credentialsProvider];
+   
+[AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+
+</pre>
+
+<p><strong>Step 3: Get your identity ID:</strong></p>
+
+<pre class="cog-code">[[credentialsProvider getIdentityId] continueWithSuccessBlock:^id(BFTask *task){
+   NSString* cognitoId = credentialsProvider.identityId;
+   return nil;
+}];
+
+// once you receive an identity id you can simply access it through the identityId property
+NSString* cognitoId = credentialsProvider.identityId;</pre>
+
+<hr>
+
+
+
+
+<p>
+	Learn more about Amazon Cognito:
+	<a href="https://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-auth.html" target="_blank">Android</a>,
+	<a href="https://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-auth.html" target="_blank">iOS</a>.
+</p>
+
+</body>

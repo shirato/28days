@@ -1,0 +1,44 @@
+{
+    "bottom": {
+        "container" : "tabbar",
+        "style" : {
+            "backgroundColor" : "#334466",
+            "iosBarStyle" : "UIBarStyleBlackTranslucent"
+        },
+		"items": [
+			{
+				"component": "tabbarItem",
+				"style": {
+					"text": "Calendar",
+					"image": "images/calendar_hand.png"
+				},
+				"link": "index.html#calendar"
+			},
+			{
+				"component": "tabbarItem",
+				"style": {
+					"text": "Email",
+					"image": "images/email_hand.png"
+					},
+				"link": "index.html#email"
+			},
+			{
+				"component": "tabbarItem",
+				"style": {
+					"text":"Alarm",
+					"image": "images/alarm_hand.png"
+					},
+				"link": "index.html#alarm"
+			},
+			{
+				"component": "tabbarItem",
+				"style": {
+					"text": "Settings",
+					"image": "images/settings_hand.png"
+					},
+				"link": "index.html#settings"
+			}
+		]
+    }
+}
+
