@@ -113,7 +113,6 @@ $(document).on('pagehide', '#settings', function () {
 });
 
 var settings = new Array(0);
-var startDate = new Date();
 var todayDate = new Date();
 var countString = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th"];
 var month = todayDate.getMonth() + 1;
@@ -138,23 +137,25 @@ function init() {
 function loadSettings() {
     settings = JSON.parse(localStorage.settings);
 
-    startDate.setFullYear(settings.sYear);
-    startDate.setMonth(settings.sMonth - 1);
-    startDate.setDate(settings.sDate);
+    var startDate = new Date(settings.sYear, settings.sMonth - 1, settings.sDate);
+    //startDate.setFullYear(settings.sYear);
+    //startDate.setMonth(settings.sMonth - 1);
+    //startDate.setDate(settings.sDate);
     var elapsedDate = (todayDate - startDate) / 1000 / 60 / 60 / 24;
     elapsedDate = Math.floor(elapsedDate);
     var count = elapsedDate % 28;
     $("#count").children("p").html(countString[count] + "<br/>day");
-    if ((count > 20) && (count < 28)) {
-        var text = "Skip today<br />" + month + "/" + date + " (" + countString[count] + " day)";
-        $('.text1').html("<h3>" + text + "</h3>");
-        $.mobile.changePage("#skipDialog");
-    }
+    //if ((count > 20) && (count < 28)) {
+    //    var text = "Skip today<br />" + month + "/" + date + " (" + countString[count] + " day)";
+    //    $('.text1').html("<h3>" + text + "</h3>");
+    //    $.mobile.changePage("#skipDialog");
+    //}
 }
 
 function saveCount() {
     var count = $("#setcount").val();
-    startDate.setDate(startDate.getDate() - count + 1);
+    var startDate = new Date();
+    startDate.setDate(todayDate.getDate() - count + 1);
     var year = startDate.getFullYear();
     var month = startDate.getMonth() + 1;
     var date = startDate.getDate();
