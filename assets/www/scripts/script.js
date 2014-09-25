@@ -256,3 +256,33 @@ function getScreenHeight() {
 //        $("#time").val(hours + ":" + minutes);
 //    });
 //}
+
+function ajaxSendMethod() {
+    $('#send').button('disable');
+    $.ajax({
+        url: 'http://searat.net/public/mailtest.php',
+        beforesend: function (xhr) {
+            var credentials = "YXBwLXVzZXI6YXBwLXVzZXI=";
+            xhr.setRequestHeader("Authorization", "Basic " + credentials);
+            //xhr.setRequestHeader("Authorization", "Basic " + "YXBwLXVzZXI6YXBwLXVzZXI=");
+        },
+        xhrFields:{
+            withCredentials: true
+        },
+        type: 'POST',
+        //username: 'app-user',
+        //password: 'app-user',
+        data: {'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val()},
+        success: function (d) {
+            alert("success");
+            $('#send').button('enable');
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            var XMLMsg = "XMLHttpRequest: " + XMLHttpRequest.status;
+            var TextMsg = "textStatus: " + textStatus;
+            var ErrorMsg = "errorThrown: " + errorThrown.message;
+            alert(XMLMsg + "\n" + TextMsg + "\n" + ErrorMsg + "\n");
+            $('#send').button('enable');
+        }
+    });
+}

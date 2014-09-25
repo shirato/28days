@@ -30,7 +30,7 @@
         Apache Cordova Team
     </author>
 
-    <access origin="*"/>
+    <access origin="http://searat.net"/>
 
     <!-- <content src="http://mysite.com/myapp.html" /> for external pages -->
     <content src="index.html" />
