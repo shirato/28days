@@ -2,6 +2,12 @@
 $(function () {
     console.log("script start");
 
+    if (typeof device === 'undefined') {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    } else {
+        onDeviceReady();
+    }
+
 
     //$("#concal").continuousCalendar({
     //    weeksBefore: 4,
@@ -32,9 +38,24 @@ $(function () {
     console.log("script end");
 });
 
+var settings = new Array(0);
+var todayDate = new Date();
+var countString = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th"];
+var month = todayDate.getMonth() + 1;
+var date = todayDate.getDate();
+var uuid;
+
+
+function onDeviceReady() {
+    console.log("Device ready");
+    uuid = window.device.uuid;
+}
+
 
 //$("div[data-role*='page']").live('pageshow', function (event) {
 //});
+
+
 
 
 //pageinit
@@ -112,11 +133,6 @@ $(document).on('pagehide', '#settings', function () {
     console.log("settings pagehide");
 });
 
-var settings = new Array(0);
-var todayDate = new Date();
-var countString = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th"];
-var month = todayDate.getMonth() + 1;
-var date = todayDate.getDate();
 
 function init() {
     console.log("init?");
@@ -161,7 +177,7 @@ function saveCount() {
     var date = startDate.getDate();
     console.log(year + "/" + month + "/" + date);
 
-    settings = { "alarm": "off", "hour": 0, "minute": 0, "repeat": "21days", "tone": "default", "alert": "off", "gmail": "", "pass": "", "name": "", "bname": "", "bemail": "", "reminder": "off", "sYear": year, "sMonth": month, "sDate": date }
+    settings = { "alarm": "off", "hour": 0, "minute": 0, "repeat": "21days", "tone": "default", "alert": "off", "name": "", "bname": "", "bemail": "", "reminder": "off", "sYear": year, "sMonth": month, "sDate": date }
 
     localStorage.settings = JSON.stringify(settings);
 }
@@ -194,8 +210,6 @@ function fadeImage() {
 function saveMailSettings() {
     settings = JSON.parse(localStorage.settings);
     settings.alert = $("#alert").val();
-    settings.gmail = $("#gmail").val();
-    settings.pass = $("#pass").val();
     settings.name = $("#name").val();
     settings.bname = $("#bname").val();
     settings.bemail = $("#bemail").val();
@@ -215,11 +229,10 @@ function loadMailSettings() {
         }
         slider.slider('refresh');
     }
-    if (settings.gmail != 0) $("#gmail").val(settings.gmail);
-    if (settings.pass != 0) $("#pass").val(settings.pass);
-    if (settings.name != 0) $("#name").val(settings.name);
-    if (settings.bname != 0) $("#bname").val(settings.bname);
-    if (settings.bemail != 0) $("#bemail").val(settings.bemail);
+    $("#name").val(settings.name);
+    $("#bname").val(settings.bname);
+    $("#bemail").val(settings.bemail);
+    $("#uuid").val(uuid);
 }
 
 function allReset() {
@@ -256,3 +269,52 @@ function getScreenHeight() {
 //        $("#time").val(hours + ":" + minutes);
 //    });
 //}
+
+function ajaxSendMethod() {
+    $('#send').button('disable');
+    //var xhr = new XMLHttpRequest();
+    //xhr.onload = function () {
+    //    alert("success");
+    //    $('#send').button('enable');
+    //};
+    //xhr.onerror = function () {
+    //    alert("Fail!");
+    //    $('#send').button('enable');
+    //};
+
+    //xhr.open('POST', 'http://searat.net/public/mailtest.php');
+    //xhr.withCredentials = true;
+    //var credentials = "YXBwLXVzZXI6YXBwLXVzZXI=";
+    //xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    //xhr.setRequestHeader("Authorization", "Basic " + credentials);
+    //var param = "name=" + $('#name').val() + "&" + "bname=" + $('#bname').val() + "&" + "bemail=" + $('#bemail').val();
+    //xhr.send(param);
+
+
+    $.ajax({
+        url: 'http://searat.net/public/mailtest.php',
+        beforeSend: function (xhr) {
+            var credentials = "YXBwLXVzZXI6YXBwLXVzZXI=";
+            xhr.setRequestHeader("Authorization", "Basic " + credentials);
+            //xhr.setRequestHeader("Authorization", "Basic " + "YXBwLXVzZXI6YXBwLXVzZXI=");
+        },
+        //xhrFields: {
+        //    withCredentials: true
+        //},
+        type: 'POST',
+        //username: 'app-user',
+        //password: 'app-user',
+        data: {'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('alert').val()},
+        success: function (d) {
+            alert("success");
+            $('#send').button('enable');
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            var XMLMsg = "XMLHttpRequest: " + XMLHttpRequest.status;
+            var TextMsg = "textStatus: " + textStatus;
+            var ErrorMsg = "errorThrown: " + errorThrown.message;
+            alert(XMLMsg + "\n" + TextMsg + "\n" + ErrorMsg + "\n");
+            $('#send').button('enable');
+        }
+    });
+}
