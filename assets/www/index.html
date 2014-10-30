@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
-<!--    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <!--<script src="plugins/plugin-loader.js"></script>
     <link rel="stylesheet" href="plugins/plugin-loader.css">
     <script>
@@ -230,7 +230,7 @@
         </div>
         <div id="eompanel" data-role="panel" data-theme="a">
             <h3>Email of the month</h3>
-            <p>!!!!!Text of Email of the month Here!!!!!(Server?)</p>
+            <p>!!!!!Text of Email of the month Here!!!!!</p>
             <a href="#" data-rel="close" data-role="button" data-icon="delete" data-inline="true">Close</a>
         </div>
 
@@ -287,6 +287,7 @@
                 <label for="uuid">Your Device ID:</label>
                 <input type="text" name="uuid" id="uuid" value="" readonly />
             </div>
+            <button type="submit" onclick="ajaxSaveMethod()" id="save">Save</button>
             <button type="submit" onclick="ajaxSendMethod()" id="send">Send</button>
             <!--</div>-->
 
