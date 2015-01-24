@@ -317,6 +317,16 @@ function ajaxLoadMessage() {
 function ajaxSaveMethod() {
     $('#save').button('disable');
 
+    console.log($('#name').val());
+    console.log($('#bname').val());
+    console.log($('#bemail').val());
+
+    console.log($('#uuid').val());
+    console.log($('#alert').val());
+    console.log(settings.sYear);
+    console.log(settings.sMonth);
+    console.log(settings.sDate);
+
 
     $.ajax({
         url: 'http://searat.net/public/savedata.php',
@@ -331,7 +341,7 @@ function ajaxSaveMethod() {
         type: 'POST',
         //username: 'app-user',
         //password: 'app-user',
-        data: { 'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('alert').val(), 'uuid': $('uuid').val() },
+        data: { 'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('#alert').val(), 'uuid': $('#uuid').val(), 'sYear': settings.sYear, 'sMonth': settings.sMonth, 'sDate': settings.sDate },
         success: function (d) {
             alert("success");
             $('#save').button('enable');
@@ -380,7 +390,7 @@ function ajaxSendMethod() {
         type: 'POST',
         //username: 'app-user',
         //password: 'app-user',
-        data: {'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('alert').val()},
+        data: {'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('#alert').val()},
         success: function (d) {
             alert("success");
             $('#send').button('enable');
