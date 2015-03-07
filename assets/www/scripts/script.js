@@ -246,8 +246,8 @@ function allReset() {
 
 function viewport(width) {
     var rootElement = document.documentElement;
-    var scale = screen.width / width * 100 + "%";
-    rootElement.style.zoom = scale;
+//    var scale = screen.width / width * 100 + "%";
+//    rootElement.style.zoom = scale;
 }
 
 function getScreenHeight() {

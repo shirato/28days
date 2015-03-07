@@ -1,15 +1,18 @@
 ﻿.ui-page{
-    background: url("../images/illust_background_dark.jpg") 50% 50% transparent;
+    background: #FECFAE;
     background-size:100%;
     background-attachment:fixed;
     font-family:Cambria;
 }
 
 .myPage > .ui-header{
-    background:transparent url(../images/28days-logo-withbg3.png);
-    background-size: 100%;
-    border:0px solid #ffffff;
-    height:80px;
+    background:transparent url(../images/28-days-logo-clear.png);
+    background-size: 40%;
+    background-repeat:no-repeat;
+    background-position:center;
+    border:none!important;
+    height:100px;
+    margin:2px;
 }
 
 .myPage > .ui-header img{
@@ -17,9 +20,20 @@
     margin:0;
 }
 
-/*.ui-header .ui-title{
-    color:#ffffff;
-}*/
+h3 {
+	font:"Bodoni MT", "Bodoni MT Black";
+	font-size:1.5em;
+}
+
+.ui-btn-inner {
+    height: 100%!important;
+    font-family: 'Bodoni MT'!important;
+    font-style: italic;
+    font-size: 1em!important;
+    border:none!important;
+    font-weight:100!important;
+}
+
 
 .ui-header .ui-title, .ui-footer .ui-title {
 min-width: 150px;
@@ -61,13 +75,14 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 }
 
 
+
 .nav-hand {
 	
 	  border:none!important;
 	
 }
 
-.nav-hand .ui-btn{
+.nav-hand .ui-btn {
     background: url("../images/Menu_tab.png");
     border:none!important;
     width: 80px;
@@ -75,7 +90,7 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
     /*border: 1px solid #00ffff;*/
 }
 
-.nav-hand .ui-btn .ui-btn-inner { 
+.nav-hand .ui-btn { 
     padding: 0;
     margin: 0;
     padding-top: 49px !important; 
@@ -149,27 +164,16 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
     /*text-align:center;*/
 }
 
-.text1{
-    border:1px solid #ffffff;
+.welcome-text{
     margin:5px;
     padding:0px 10px;
     text-align:center;
 }
 
 #content{
-    border:1px solid #ffffff;
     margin:5px auto;
 }
 
-#content a{
-    display:block;
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    text-indent:-999px;
-}
 
 #checkimg{
     visibility:hidden;
@@ -236,10 +240,7 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 }
 
 #initmain{
-    border:1px solid #ffffff;
     text-align:center;
-    margin:5px;
-    padding:5px;
 }
 
 #initcount{
@@ -247,6 +248,10 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
     margin:5px auto;
     padding:5px;
     text-align:center;
+}
+
+#save {
+	align-self:baseline;
 }
 
 #initcount p{
@@ -260,33 +265,48 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 
 /* check buttons */
 .ui-btn-check{
-	height: 44px;
-	width: 205px;
-	background : url("../images/checkbutton.png") 50% 50% no-repeat transparent;
+	height: 20%;
+	width: 100%;
+	background : #C30305;
 	background-size: 100%;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 0!important;
+	margin-right:0!important;
+    margin-top:0!important;
+    margin-bottom:0!important;
+    font-size: 2.5em;
+    color: #fff!important;
 	border:0px;
+    position:fixed;
+    bottom:0px;
 	box-shadow: none!important; 
     -moz-box-shadow: none!important; 
     -webkit-box-shadow: none!important; 
     -webkit-border-radius: 0 !important; 
     border-radius: 0 !important; 
+    text-shadow: none!important;
 }
 
 .ui-btn-skiptocalendar{
-	height: 30px;
-	width: 205px;
-	background : url("../images/skiptocalendarbutton.png") 50% 50% no-repeat transparent;
-	background-size: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	border:0px;
-	box-shadow: none!important; 
-    -moz-box-shadow: none!important; 
-    -webkit-box-shadow: none!important; 
-    -webkit-border-radius: 0 !important; 
-    border-radius: 0 !important; 
+
+    display:block;
+    position:fixed;
+    right: 30px;
+    z-index:+2;
+    bottom: 13%;
+    width:75px;
+    height:75px;
+    line-height:50px;
+    border: none;
+    border-radius: 50%;
+    color:#FC8D77;
+    text-align:center;
+    text-decoration:none;
+    background: #FC8D77;
+    box-shadow: 2px 4px 4px #888888;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    font-size:1em;
+    font-weight:bold; 
+
 }
 	
 #check_toppage{
