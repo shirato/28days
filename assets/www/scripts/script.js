@@ -45,6 +45,7 @@ var month = todayDate.getMonth() + 1;
 var date = todayDate.getDate();
 var uuid;
 var message = new Array(0);
+var timezone = todayDate.getTimezoneOffset();
 
 
 function onDeviceReady() {
@@ -138,6 +139,7 @@ $(document).on('pagehide', '#settings', function () {
 
 function init() {
     console.log("init?");
+    console.log(todayDate);
     $("#date").children("p").html(month + "/" + date);
 
     if (localStorage.settings == null) {
@@ -179,7 +181,7 @@ function saveCount() {
     var date = startDate.getDate();
     console.log(year + "/" + month + "/" + date);
 
-    settings = { "alarm": "off", "hour": 0, "minute": 0, "repeat": "21days", "tone": "default", "alert": "off", "name": "", "bname": "", "bemail": "", "reminder": "off", "sYear": year, "sMonth": month, "sDate": date, "active": "false"}
+    settings = { "alarm": "off", "hour": 0, "minute": 0, "repeat": "21days", "tone": "default", "alert": "off", "name": "", "bname": "", "bemail": "", "reminder": "off", "sYear": year, "sMonth": month, "sDate": date, "active": "false", "timezone": timezone}
 
     localStorage.settings = JSON.stringify(settings);
 }
@@ -341,7 +343,8 @@ function ajaxSaveMethod() {
         type: 'POST',
         //username: 'app-user',
         //password: 'app-user',
-        data: { 'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('#alert').val(), 'uuid': $('#uuid').val(), 'sYear': settings.sYear, 'sMonth': settings.sMonth, 'sDate': settings.sDate },
+        data: {
+            'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('#alert').val(), 'uuid': $('#uuid').val(), 'sYear': settings.sYear, 'sMonth': settings.sMonth, 'sDate': settings.sDate, 'timezone': settings.timezone},
         success: function (d) {
             alert("success");
             $('#save').button('enable');
