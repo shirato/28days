@@ -203,52 +203,58 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 }
 
 #main{
-    padding-top:50px;
-    padding-bottom:225px;
+	margin-left:35%;
+	width:100%;
+	align-items:center;
+    padding-bottom:50%;
     text-align:center;
 	vertical-align:middle;
+	
 }
 
 #date{
     display:table;
-    float:left;
-    width:120px;
-    height:120px;
-    margin:5px;
+    width:90px;
+    height:90px;
+    margin-bottom:5px;
     padding:5px;
     text-align:center;
-	border:thin solid;
-	border-color:#000000;
+	background-color:#FFFFFF;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+	border-radius:50%;
 }
 
 #date p{
     display:table-cell;
     text-align:center;
     vertical-align:middle;
-    font-family:Cambria;
+	font-family:"Bodoni MT", "Bodoni MT Black";
+	font-style:italic;
     font-size: 2em;
 	text-shadow:none;
 }
 
 #count{
     display:table; 
-    float:right;
-    width:120px;
-    height:120px;
-    margin:5px;
+    width:90px;
+    height:90px;
     padding:5px;
     text-align:center;
-	border:thin solid;
-	border-color:#000000;
+	background-color:#fff;
+	border-radius:50%;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+	
 }
 
 #count p{
     display:table-cell;
     text-align:center;
     vertical-align:middle;
-    font-family:Cambria;
     font-size: 2em;
 	text-shadow:none;
+	font-family:"Bodoni MT", "Bodoni MT Black";
+	font-style:italic;
+
 }
 
 #initmain{
@@ -301,6 +307,7 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 }
 
 #save .ui-btn-inner{
+	padding-top:10%;
 	font-size: 2.5em!important;
 }
 
@@ -312,6 +319,7 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 }
 
 #check .ui-btn-inner{
+	padding-top:10%;
 	font-size: 2.5em!important;
 }
 
