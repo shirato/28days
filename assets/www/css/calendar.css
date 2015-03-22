@@ -71,6 +71,7 @@
 	color:#000;
     text-decoration: none!important;
 	text-shadow:none!important;
+	font-style:italic;
 }
 
 #calendar a.button {
@@ -187,4 +188,11 @@
 
 #calendar a:focus {
 	outline: none;
+}
+
+#calendar td.saturday a{
+	color: #5431E1!important;
+}
+#calendar td.sunday a{
+	color: #E93437!important;
 }

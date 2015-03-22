@@ -127,43 +127,43 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 
 .ui-icon-my-alarm{
     background :url("../images/alarm_off.png") 50% 50% no-repeat #f5f5f5;
-    background-size: 75%;
+    background-size: 70%;
 }
 
 .ui-btn-active .ui-icon-my-alarm{
     background :url("../images/alarm.png") 50% 50% no-repeat #f5f5f5;
-    background-size: 75%;
+    background-size: 70%;
 }
 
 .ui-icon-my-calendar{
     background :url("../images/calendar_off.png") 50% 50% no-repeat #f5f5f5;
-    background-size: 75%;
+    background-size: 70%;
 }
 
 .ui-btn-active .ui-icon-my-calendar{
     background :url("../images/calendar.png") 50% 50% no-repeat #f5f5f5;
-    background-size: 75%;
+    background-size: 70%;
 }
 
 .ui-icon-my-email{
     background :url("../images/email_off.png") 50% 50% no-repeat #f5f5f5;
-    background-size: 75%;
+    background-size: 70%;
 }
 
 .ui-btn-active .ui-icon-my-email{
     background :url("../images/email.png") 50% 50% no-repeat #f5f5f5;
-    background-size: 75%;
+    background-size: 70%;
 }
 
 .ui-icon-my-settings{
     background :url("../images/settings_off.png") 50% 50% no-repeat #f5f5f5;
-    background-size: 75%;
+    background-size: 70%;
 	back
 }
 
 .ui-btn-active .ui-icon-my-settings{
     background :url("../images/settings.png") 50% 50% no-repeat #f5f5f5;
-    background-size: 75%;
+    background-size: 70%;
 }
 
 
