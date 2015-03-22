@@ -67,9 +67,10 @@
 }
 
 #calendar a {
-/*    color: #000a28;*/
-	color:#FFFFFF;
-    text-decoration: none;
+ //  color: #000a28;
+	color:#000;
+    text-decoration: none!important;
+	text-shadow:none!important;
 }
 
 #calendar a.button {
@@ -107,7 +108,7 @@
 }
 
 #calendar td {
-	background-color: #5E6E87;
+	background-color: #FFF;
 	/*border-right: 1px solid black;
 	border-bottom: 1px solid black;*/
 	padding: 20px 0px;
@@ -149,8 +150,8 @@
 }
 
 #calendar td.shaded {
-	/*background-color: #E75F5F;*/
-	background-color:#ac0303;
+	background-color: #EFEFEF;
+//	background-color:#ac0303;
 }
 
 #calendar td.today {

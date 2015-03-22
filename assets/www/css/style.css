@@ -1,18 +1,20 @@
 ﻿.ui-page{
-    background: #FECFAE;
+//    background: #FECFAE;
+    background: #F5F5F5;
     background-size:100%;
     background-attachment:fixed;
     font-family:Cambria;
 }
 
 .myPage > .ui-header{
-    background:transparent url(../images/28-days-logo-clear.png);
+    background:#F5F5F5 url(../images/28-days-logo-clear.png);
     background-size: 40%;
     background-repeat:no-repeat;
-    background-position:center;
+	background-position: 50% 30%;
+//    background-position:center;
     border:none!important;
     height:100px;
-    margin:2px;
+    margin:0px;
 }
 
 .myPage > .ui-header img{
@@ -28,7 +30,6 @@ h3 {
 .ui-btn-inner {
     height: 100%!important;
     border:none!important;
-
 }
 
 /*
@@ -124,43 +125,44 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 }
 
 .ui-icon-my-alarm{
-    background :url("../images/alarm_off.png") 50% 50% no-repeat transparent;
-    background-size: 100%;
+    background :url("../images/alarm_off.png") 50% 50% no-repeat #f5f5f5;
+    background-size: 75%;
 }
 
 .ui-btn-active .ui-icon-my-alarm{
-    background :url("../images/alarm.png") 50% 50% no-repeat transparent;
-    background-size: 100%;
+    background :url("../images/alarm.png") 50% 50% no-repeat #f5f5f5;
+    background-size: 75%;
 }
 
 .ui-icon-my-calendar{
-    background :url("../images/calendar_off.png") 50% 50% no-repeat transparent;
-    background-size: 100%;
+    background :url("../images/calendar_off.png") 50% 50% no-repeat #f5f5f5;
+    background-size: 75%;
 }
 
 .ui-btn-active .ui-icon-my-calendar{
-    background :url("../images/calendar.png") 50% 50% no-repeat transparent;
-    background-size: 100%;
+    background :url("../images/calendar.png") 50% 50% no-repeat #f5f5f5;
+    background-size: 75%;
 }
 
 .ui-icon-my-email{
-    background :url("../images/email_off.png") 50% 50% no-repeat transparent;
-    background-size: 100%;
+    background :url("../images/email_off.png") 50% 50% no-repeat #f5f5f5;
+    background-size: 75%;
 }
 
 .ui-btn-active .ui-icon-my-email{
-    background :url("../images/email.png") 50% 50% no-repeat transparent;
-    background-size: 100%;
+    background :url("../images/email.png") 50% 50% no-repeat #f5f5f5;
+    background-size: 75%;
 }
 
 .ui-icon-my-settings{
-    background :url("../images/settings_off.png") 50% 50% no-repeat transparent;
-    background-size: 100%;
+    background :url("../images/settings_off.png") 50% 50% no-repeat #f5f5f5;
+    background-size: 75%;
+	back
 }
 
 .ui-btn-active .ui-icon-my-settings{
-    background :url("../images/settings.png") 50% 50% no-repeat transparent;
-    background-size: 100%;
+    background :url("../images/settings.png") 50% 50% no-repeat #f5f5f5;
+    background-size: 75%;
 }
 
 
@@ -352,3 +354,11 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 	height: 170px !important;
 	text-align: center;
 }
+
+
+.ui-footer{
+	background:f5f5f5;
+	height: 20%;
+	border:2px #969696;
+}
+
