@@ -168,9 +168,13 @@ function generateDay(day, date)
 {
 	var isShaded = (date.getMonth() % 2);
 	var isToday = (date.getDate() == todayDate.getDate() && date.getMonth() == todayDate.getMonth() && date.getFullYear() == todayDate.getFullYear());
+	var isSaturday = (date.getDay() == 6);
+	var isSunday = (date.getDay() === 0);
 
-	if(isShaded) day.className += ' shaded';
-	if(isToday) day.className += ' today';
+	if (isShaded) day.className += ' shaded';
+	if (isToday) day.className += ' today';
+	if (isSaturday) day.className += ' saturday';
+	if (isSunday) day.className += ' sunday';
 
 	day.id = idForDate(date);
 	day.innerHTML = '<span><a href="#checkDialog" data-rel="popup" data-position-to="#headercalendar" data-role="button">' + date.getDate() + '</a></span>';
