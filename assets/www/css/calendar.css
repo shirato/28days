@@ -17,7 +17,7 @@
 	top: 0;
 	border-bottom: 2px solid black;
 }*/
-    
+
 #calendar {
     color: #000a28;
     border-collapse:collapse;
@@ -68,7 +68,7 @@
 
 #calendar a {
  //  color: #000a28;
-	color:#000;
+		color:#4f4f4f;
     text-decoration: none!important;
 	text-shadow:none!important;
 	font-style:italic;
