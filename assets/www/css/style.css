@@ -387,6 +387,10 @@ ul.ui-grid-c{
 	padding-bottom:0px!important;
 }
 
+.ui-bar-a {
+  border: 1px solid #C30305!important;
+}
+
 /*buttons*/
 .ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-icon-right.ui-btn-up-a{
   background:#C30305;
@@ -442,8 +446,18 @@ ul.ui-grid-c{
 
 /*reset button*/
 #reset .ui-btn-inner{
-  color:#000;
+  background:#000;
+  box-shadow:none!important;
+  border:none!important;
+  -webkit-border-radius: .0 !important;
+  border-radius: .0 !important;
+  color:#fff;
   text-shadow:none;
+}
+
+.ui-btn-up-e {
+  border: none!important;
+
 }
 
 .ui-block-a .ui-btn-inner{
