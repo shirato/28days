@@ -97,6 +97,7 @@
 
         <!--checkDialog-->
         <div id="checkDialog" data-role="popup" data-overlay-theme="a">
+            <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
             <!--header-->
             <div data-role="header">
                 <h3>Check this date?</h3>
@@ -111,11 +112,11 @@
                         <a href="" data-role="button" data-rel="back" data-theme="a">No</a>
                     </div>
                 </div>
-                <div class="ui-grid-solo">
+                <!--<div class="ui-grid-solo">
                     <div class="ui-block-a">
                         <a href="" data-role="button" data-rel="back" data-theme="a">Cancel</a>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
 
@@ -410,7 +411,7 @@
 
 
     <!--resetDialog-->
-    <div id="resetDialog" data-role="page" data-overlay-theme="a" style="max-width:400px;">
+    <div id="resetDialog" data-role="page" data-overlay-theme="a" style="max-width:400px;" data-close-btn="right">
         <!--header-->
         <div data-role="header">
             <h3>All reset</h3>

@@ -371,7 +371,7 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 
 #checkDialog {
 	width: 200px !important;
-	height: 170px !important;
+	/*height: 170px !important;*/
 	text-align: center;
 }
 
