@@ -345,6 +345,19 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 	font-size: 2.5em!important;
 }
 
+#checkDialog {
+	width: 200px !important;
+//	height: 170px !important;
+	/*height: 170px !important;*/
+	text-align: center;
+}
+
+.ui-header.ui-bar-a{
+  border:none!important;
+  background:none!important;
+
+}
+
 #skip .ui-btn-skiptocalendar{
 
     display:block;
