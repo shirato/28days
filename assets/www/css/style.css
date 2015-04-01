@@ -354,7 +354,7 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 
 .ui-header.ui-bar-a{
   border:none!important;
-  background:none!important;
+//  background:none!important;
 
 }
 
@@ -401,7 +401,7 @@ ul.ui-grid-c{
 }
 
 .ui-bar-a {
-  border: 1px solid #C30305!important;
+  border-top: 1px solid #C30305!important;
 }
 
 /*buttons*/
