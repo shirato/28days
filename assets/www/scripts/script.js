@@ -240,6 +240,7 @@ function loadMailSettings() {
 }
 
 function allReset() {
+    ajaxResetMethod();
     localStorage.clear();
     //localStorage.removeItem("settings");
     init();
@@ -404,6 +405,40 @@ function ajaxSendMethod() {
             var ErrorMsg = "errorThrown: " + errorThrown.message;
             alert(XMLMsg + "\n" + TextMsg + "\n" + ErrorMsg + "\n");
             $('#send').button('enable');
+        }
+    });
+}
+
+function ajaxResetMethod() {
+    $('#reset').addClass('ui-disabled');
+
+
+    $.ajax({
+        url: 'http://searat.net/public/deletedata.php',
+        beforeSend: function (xhr) {
+            var credentials = "YXBwLXVzZXI6YXBwLXVzZXI=";
+            xhr.setRequestHeader("Authorization", "Basic " + credentials);
+            //xhr.setRequestHeader("Authorization", "Basic " + "YXBwLXVzZXI6YXBwLXVzZXI=");
+        },
+        //xhrFields: {
+        //    withCredentials: true
+        //},
+        type: 'POST',
+        //username: 'app-user',
+        //password: 'app-user',
+        data: {
+            'name': settings.name, 'bname': settings.bname, 'bemail': settings.bemail, 'alert': settings.alert, 'uuid': uuid, 'sYear': settings.sYear, 'sMonth': settings.sMonth, 'sDate': settings.sDate, 'timezone': settings.timezone
+        },
+        success: function (d) {
+            alert("success");
+            $('#reset').removeClass('ui-disabled');
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            var XMLMsg = "XMLHttpRequest: " + XMLHttpRequest.status;
+            var TextMsg = "textStatus: " + textStatus;
+            var ErrorMsg = "errorThrown: " + errorThrown.message;
+            alert(XMLMsg + "\n" + TextMsg + "\n" + ErrorMsg + "\n");
+            $('#reset').removeClass('ui-disabled');
         }
     });
 }
