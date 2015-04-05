@@ -44,6 +44,8 @@ var countString = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"
 var month = todayDate.getMonth() + 1;
 var date = todayDate.getDate();
 var uuid;
+var message = new Array(0);
+var timezone = todayDate.getTimezoneOffset();
 
 
 function onDeviceReady() {
@@ -105,6 +107,7 @@ $(document).on('pageshow', '#alarm', function () {
 $(document).on('pageshow', '#email', function () {
     console.log("email pageshow");
     loadMailSettings();
+    ajaxLoadMessage();
 });
 
 $(document).on('pageshow', '#settings', function () {
@@ -136,6 +139,7 @@ $(document).on('pagehide', '#settings', function () {
 
 function init() {
     console.log("init?");
+    console.log(todayDate);
     $("#date").children("p").html(month + "/" + date);
 
     if (localStorage.settings == null) {
@@ -177,7 +181,7 @@ function saveCount() {
     var date = startDate.getDate();
     console.log(year + "/" + month + "/" + date);
 
-    settings = { "alarm": "off", "hour": 0, "minute": 0, "repeat": "21days", "tone": "default", "alert": "off", "name": "", "bname": "", "bemail": "", "reminder": "off", "sYear": year, "sMonth": month, "sDate": date }
+    settings = { "alarm": "off", "hour": 0, "minute": 0, "repeat": "21days", "tone": "default", "alert": "off", "name": "", "bname": "", "bemail": "", "reminder": "off", "sYear": year, "sMonth": month, "sDate": date, "active": "false", "timezone": timezone}
 
     localStorage.settings = JSON.stringify(settings);
 }
@@ -236,6 +240,7 @@ function loadMailSettings() {
 }
 
 function allReset() {
+    ajaxResetMethod();
     localStorage.clear();
     //localStorage.removeItem("settings");
     init();
@@ -254,6 +259,10 @@ function getScreenHeight() {
     return screen.height;
 }
 
+function escapeHTML(html) {
+    return $('div').text(html).html();
+}
+
 //function myDatePicker() {
 //    var myNewDate = new Date();
 
@@ -269,6 +278,87 @@ function getScreenHeight() {
 //        $("#time").val(hours + ":" + minutes);
 //    });
 //}
+
+function ajaxLoadMessage() {
+    $.ajax({
+        url: 'http://searat.net/public/getmessage.php',
+        beforeSend: function (xhr) {
+            var credentials = "YXBwLXVzZXI6YXBwLXVzZXI=";
+            xhr.setRequestHeader("Authorization", "Basic " + credentials);
+            //xhr.setRequestHeader("Authorization", "Basic " + "YXBwLXVzZXI6YXBwLXVzZXI=");
+        },
+        //xhrFields: {
+        //    withCredentials: true
+        //},
+        type: 'GET',
+        dataType: 'json',
+        //username: 'app-user',
+        //password: 'app-user',
+        success: function (j_data) {
+            console.log("success to load");
+            if (j_data == null) {
+                alert("message is N/A");
+            } else {
+                message = j_data;
+                //message = JSON.parse(j_data);
+                $("#eompanel").find("h3").text("Email of the month (" + message.month + ")");
+                $("#eompanel").find("p").text(message.detail_eng);
+                //$("#eompanel").html("<h3>Email of the month (" + month + ")</h3> <p>" + detail + "</p>" +
+                //    '<a href="#" data-rel="close" data-role="button" data-icon="delete" data-inline="true">Close</a>');
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            var XMLMsg = "XMLHttpRequest: " + XMLHttpRequest.status;
+            var TextMsg = "textStatus: " + textStatus;
+            var ErrorMsg = "errorThrown: " + errorThrown.message;
+            alert(XMLMsg + "\n" + TextMsg + "\n" + ErrorMsg + "\n");
+        }
+    });
+}
+
+
+function ajaxSaveMethod() {
+    $('#save').button('disable');
+
+    console.log($('#name').val());
+    console.log($('#bname').val());
+    console.log($('#bemail').val());
+
+    console.log($('#uuid').val());
+    console.log($('#alert').val());
+    console.log(settings.sYear);
+    console.log(settings.sMonth);
+    console.log(settings.sDate);
+
+
+    $.ajax({
+        url: 'http://searat.net/public/savedata.php',
+        beforeSend: function (xhr) {
+            var credentials = "YXBwLXVzZXI6YXBwLXVzZXI=";
+            xhr.setRequestHeader("Authorization", "Basic " + credentials);
+            //xhr.setRequestHeader("Authorization", "Basic " + "YXBwLXVzZXI6YXBwLXVzZXI=");
+        },
+        //xhrFields: {
+        //    withCredentials: true
+        //},
+        type: 'POST',
+        //username: 'app-user',
+        //password: 'app-user',
+        data: {
+            'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('#alert').val(), 'uuid': $('#uuid').val(), 'sYear': settings.sYear, 'sMonth': settings.sMonth, 'sDate': settings.sDate, 'timezone': settings.timezone},
+        success: function (d) {
+            alert("success");
+            $('#save').button('enable');
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            var XMLMsg = "XMLHttpRequest: " + XMLHttpRequest.status;
+            var TextMsg = "textStatus: " + textStatus;
+            var ErrorMsg = "errorThrown: " + errorThrown.message;
+            alert(XMLMsg + "\n" + TextMsg + "\n" + ErrorMsg + "\n");
+            $('#save').button('enable');
+        }
+    });
+}
 
 function ajaxSendMethod() {
     $('#send').button('disable');
@@ -304,7 +394,7 @@ function ajaxSendMethod() {
         type: 'POST',
         //username: 'app-user',
         //password: 'app-user',
-        data: {'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('alert').val()},
+        data: {'name': $('#name').val(), 'bname': $('#bname').val(), 'bemail': $('#bemail').val(), 'alert': $('#alert').val()},
         success: function (d) {
             alert("success");
             $('#send').button('enable');
@@ -315,6 +405,40 @@ function ajaxSendMethod() {
             var ErrorMsg = "errorThrown: " + errorThrown.message;
             alert(XMLMsg + "\n" + TextMsg + "\n" + ErrorMsg + "\n");
             $('#send').button('enable');
+        }
+    });
+}
+
+function ajaxResetMethod() {
+    $('#reset').addClass('ui-disabled');
+
+
+    $.ajax({
+        url: 'http://searat.net/public/deletedata.php',
+        beforeSend: function (xhr) {
+            var credentials = "YXBwLXVzZXI6YXBwLXVzZXI=";
+            xhr.setRequestHeader("Authorization", "Basic " + credentials);
+            //xhr.setRequestHeader("Authorization", "Basic " + "YXBwLXVzZXI6YXBwLXVzZXI=");
+        },
+        //xhrFields: {
+        //    withCredentials: true
+        //},
+        type: 'POST',
+        //username: 'app-user',
+        //password: 'app-user',
+        data: {
+            'name': settings.name, 'bname': settings.bname, 'bemail': settings.bemail, 'alert': settings.alert, 'uuid': uuid, 'sYear': settings.sYear, 'sMonth': settings.sMonth, 'sDate': settings.sDate, 'timezone': settings.timezone
+        },
+        success: function (d) {
+            alert("success");
+            $('#reset').removeClass('ui-disabled');
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            var XMLMsg = "XMLHttpRequest: " + XMLHttpRequest.status;
+            var TextMsg = "textStatus: " + textStatus;
+            var ErrorMsg = "errorThrown: " + errorThrown.message;
+            alert(XMLMsg + "\n" + TextMsg + "\n" + ErrorMsg + "\n");
+            $('#reset').removeClass('ui-disabled');
         }
     });
 }
