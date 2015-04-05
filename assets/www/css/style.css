@@ -3,7 +3,7 @@
     background: #F5F5F5;
     background-size:100%;
     background-attachment:fixed;
-    font-family:Cambria;
+    font-family:"Cambria";
 }
 
 .myPage > .ui-header{
@@ -23,7 +23,8 @@
 }
 
 h3 {
-	font:"Bodoni MT", "Bodoni MT Black";
+//	font:"Bodoni MT", "Bodoni MT Black";
+  font-family:"Cambria"
 	font-size:1.5em;
 }
 
@@ -33,15 +34,11 @@ h3 {
 	padding:none!important;
 }
 
-/*
-.ui-btn-text {
-	font-family: 'Bodoni MT'!important;
-    font-style: italic;
-    font-size: 1em!important;
-	font-weight:100!important;
 
+.ui-btn-text {
+	font-family: "Cambria"!important;
 }
-*/
+
 
 .ui-header .ui-title, .ui-footer .ui-title {
 min-width: 150px;
@@ -65,18 +62,18 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 }
 
 .ui-header{
-    font-family:Cambria;
+    font-family:"Cambria";
 }
 
 .ui-content{
-    font-family:Cambria;
+    font-family:"Cambria";
     background:transparent;
     height:100%;
 	padding-top: 5px;
 }
 
 .ui-footer{
-    font-family:Cambria;
+    font-family:"Cambria";
     background:transparent;
     border:none !important;
 
@@ -246,7 +243,8 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
     display:table-cell;
     text-align:center;
     vertical-align:middle;
-	font-family:"Bodoni MT", "Bodoni MT Black";
+//	font-family:"Bodoni MT", "Bodoni MT Blac";
+	font-family:"Cambria";
 	font-style:italic;
     font-size: 2.5em;
 	text-shadow:none;
@@ -272,7 +270,8 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
     vertical-align:middle;
     font-size: 3.5em;
 	text-shadow:none;
-	font-family:"Bodoni MT", "Bodoni MT Black";
+//	font-family:"Bodoni MT", "Bodoni MT Black";
+font-family:"Cambria"
 	font-style:italic;
   color:#4f4f4f;
 
@@ -297,7 +296,7 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
     display:table-cell;
     text-align:center;
     vertical-align:middle;
-    font-family:Cambria;
+    font-family:"Cambria";
     font-size: 2em;
     line-height: 20px;
 }
@@ -312,7 +311,8 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 	margin-right:0!important;
     margin-top:0!important;
     margin-bottom:0!important;
-	font-family: 'Bodoni MT'!important;
+//	font-family: 'Bodoni MT'!important;
+  font-family:"Cambria"
     font-style: italic;
 	font-weight:100!important;
     color: #fff!important;
@@ -333,7 +333,8 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 }
 
 #skip .ui-btn-inner{
-	font-family:"Bodoni MT", "Bodoni MT Black";
+//	font-family:"Bodoni MT", "Bodoni MT Black";
+  font-family:"Cambria"
 	font-style:italic;
 	font-size: 1.2em!important;
 	color:#fff;
