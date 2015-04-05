@@ -55,26 +55,30 @@
         <!--content-->
         <div data-role="content">
             <div id="content">
-                <a href="" onclick="fadeImage();">Link</a>
+              
                 <!--<div id="text1">
                     <h3>Click anywhere to check</h3>
                 </div>-->
-                <div id="main">
-                    <div id="date"><p>--/--</p></div>
-                    <div id="count"><p>--<br />day</p></div>
-                </div>
+                <div id="count"><p>--<br />day</p></div>
+                <div id="date"><p>--/--</p></div>
+
+
+<!--              <div id="main">
+
+              </div>
+-->
             </div>
             <div id="checkimg">
                 <img src="./images/illust_Checkbig1.png" />
                 <img src="./images/illust_Checkbig2.png" />
             </div>
-            <div id="check_toppage">
-                <!--  <a href="#calendarpage" data-role="button">Check</a>-->
-                <a href="" data-role="button" class="ui-btn-check" onclick="fadeImage();" data-theme="a"></a>
-                <a href="#calendarpage" data-role="button" class="ui-btn-skiptocalendar" data-theme="a"></a>
-            </div>
         </div>
-
+ 		<div id="skip">
+            <a href="#calendarpage" data-role="button" class="ui-btn-skiptocalendar" data-theme="a">Skip</a>
+        </div>
+        <div id="check">
+                <a href="" data-role="button" class="ui-btn-check" onclick="fadeImage();" data-theme="a">Check</a>
+        </div>
         <!--footer-->
         <div data-role="footer" data-position="fixed">
             <!--<div data-role="navbar">
@@ -94,7 +98,8 @@
 
         <!--checkDialog-->
         <div id="checkDialog" data-role="popup" data-overlay-theme="a">
-            <!--header-->
+          <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+          <!--header-->
             <div data-role="header">
                 <h3>Check this date?</h3>
             </div>
@@ -108,11 +113,11 @@
                         <a href="" data-role="button" data-rel="back" data-theme="a">No</a>
                     </div>
                 </div>
-                <div class="ui-grid-solo">
+                <!--<div class="ui-grid-solo">
                     <div class="ui-block-a">
                         <a href="" data-role="button" data-rel="back" data-theme="a">Cancel</a>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
 
@@ -120,7 +125,7 @@
         <div data-role="header" data-add-back-btn="true" data-back-btn-text="Back" data-position="fixed">
             <a href="index.html" data-icon="home" data-iconpos="notext"></a>
             <!--            <h1><img src="images/illust_logo.png"></h1>-->
-            <div id="headercalendar"><a href="javascript:smoothScrollToToday()" data-role="button" data-theme="a" style="margin-top: 0px;">Scroll to today</a></div>
+            <!--          <div style="position:absolute; top:80px; width:100%; height:1px; background:#C30305;"></div> -->          <div id="headercalendar"><a href="javascript:smoothScrollToToday()" data-role="button" data-theme="a" style="margin-top: 0px;">Scroll to today</a></div>
         </div>
         <!--content-->
         <div data-role="content" class="ui-content">
@@ -159,6 +164,7 @@
         <!--header-->
         <div data-role="header" data-add-back-btn="true" data-back-btn-text="Back" data-position="fixed">
             <a href="index.html" data-icon="home" data-iconpos="notext"></a>
+            <!--    <div style="position:absolute; top:80px; width:100%; height:1px; background:#C30305;"></div>-->
             <!--  <h1><img src="images/illust_logo.png"></h1>-->
         </div>
         <!--content-->
@@ -238,6 +244,7 @@
         <!--header-->
         <div data-role="header" data-add-back-btn="true" data-back-btn-text="Back" data-position="fixed">
             <a href="index.html" data-icon="home" data-iconpos="notext"></a>
+            <!--<div style="position:absolute; top:80px; width:100%; height:1px; background:#C30305;"></div> -->
             <!--<h1><img src="images/illust_logo.png"></h1>-->
         </div>
         <!--content-->
@@ -314,6 +321,7 @@
         <div data-role="header" data-add-back-btn="true" data-back-btn-text="Back" data-position="fixed">
             <a href="index.html" data-icon="home" data-iconpos="notext"></a>
             <h1><!--<img src="images/illust_logo.png">--></h1>
+<!--            <div style="position:absolute; top:80px; width:100%; height:1px; background:#C30305;"></div>-->
         </div>
         <!--content-->
         <div data-role="content" class="ui-content">
@@ -323,9 +331,11 @@
                     <option value="off">Off</option>
                     <option value="on">On</option>
                 </select>
-                <p>Push notification in case you forget and one day before the next cycle starts.</p>
+                <p>Push notification in case you forget. We will remember you one day before the next cycle starts.</p>
             </div>
-            <a href="#resetDialog" data-rel="dialog" data-theme="e" data-role="button">All reset</a>
+            <div id=reset>
+                <a href="#resetDialog" data-rel="dialog" data-theme="e" data-role="button">All reset</a>
+            </div>
         </div>
         <!--footer-->
         <div data-role="footer" data-position="fixed" data-id="myfooter">
@@ -351,7 +361,7 @@
         <!--content-->
         <div data-role="content">
             <div id="content">
-                <div class="text1">
+                <div class="welcome-text">
                     <h3>Welcome.<br /><br />In your cycle, which day is today?</h3>
                 </div>
 
@@ -360,42 +370,43 @@
                     <div id="initcount">
                         <p>
                             <select name="setcount" id="setcount" data-inline="true" data-iconpos="right">
-                                <option value="1">1st</option>
-                                <option value="2">2nd</option>
-                                <option value="3">3rd</option>
-                                <option value="4">4th</option>
-                                <option value="5">5th</option>
-                                <option value="6">6th</option>
-                                <option value="7">7th</option>
-                                <option value="8">8th</option>
-                                <option value="9">9th</option>
-                                <option value="10">10th</option>
-                                <option value="11">11th</option>
-                                <option value="12">12th</option>
-                                <option value="13">13th</option>
-                                <option value="14">14th</option>
-                                <option value="15">15th</option>
-                                <option value="16">16th</option>
-                                <option value="17">17th</option>
-                                <option value="18">18th</option>
-                                <option value="19">19th</option>
-                                <option value="20">20th</option>
-                                <option value="21">21st</option>
-                                <option value="22">22nd</option>
-                                <option value="23">23rd</option>
-                                <option value="24">24th</option>
-                                <option value="25">25th</option>
-                                <option value="26">26th</option>
-                                <option value="27">27th</option>
-                                <option value="28">28th</option>
+                                <option value="1">1st day</option>
+                                <option value="2">2nd day</option>
+                                <option value="3">3rd day</option>
+                                <option value="4">4th day</option>
+                                <option value="5">5th day</option>
+                                <option value="6">6th day</option>
+                                <option value="7">7th day</option>
+                                <option value="8">8th day</option>
+                                <option value="9">9th day</option>
+                                <option value="10">10th day</option>
+                                <option value="11">11th day</option>
+                                <option value="12">12th day</option>
+                                <option value="13">13th day</option>
+                                <option value="14">14th day</option>
+                                <option value="15">15th day</option>
+                                <option value="16">16th day</option>
+                                <option value="17">17th day</option>
+                                <option value="18">18th day</option>
+                                <option value="19">19th day</option>
+                                <option value="20">20th day</option>
+                                <option value="21">21st day</option>
+                                <option value="22">22nd day</option>
+                                <option value="23">23rd day</option>
+                                <option value="24">24th day</option>
+                                <option value="25">25th day</option>
+                                <option value="26">26th day</option>
+                                <option value="27">27th day</option>
+                                <option value="28">28th day</option>
                             </select>
-                            <br />day
                         </p>
                     </div>
                 </div>
             </div>
-            <a href="#home" data-role="button" onclick="saveCount();">Save</a>
         </div>
+        <div id="save">
+            	<a href="#home" data-role="button" class="ui-btn-check" onclick="saveCount();">Save</a>
+			</div>
 
         <!--footer-->
         <div data-role="footer" data-position="fixed">
@@ -405,7 +416,7 @@
 
 
     <!--resetDialog-->
-    <div id="resetDialog" data-role="page" data-overlay-theme="a" style="max-width:400px;">
+    <div id="resetDialog" data-role="page" data-overlay-theme="a" style="max-width:400px;" data-close-btn="right">
         <!--header-->
         <div data-role="header">
             <h3>All reset</h3>
