@@ -69,6 +69,8 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
     font-family:"Cambria";
     background:transparent;
     height:100%;
+    margin-left:auto;
+    margin-right:auto;
 	padding-top: 5px;
 }
 
@@ -171,19 +173,27 @@ background: url("../images/illust_background_dark.jpg") 50% 50% transparent repe
 }
 
 .welcome-text{
-    margin:5px;
-    padding:0px 10px;
+    width:80%;
+  //  margin:5px;
+  //  padding:0px 10px;
     text-align:center;
+    margin-left: auto;
+    margin-right:auto;
+    font-family:"Cambria";
+    font-style:italic;
+      font-size: 1.2em;
+    text-shadow:none;
+    color:#4f4f4f;
 }
 
 #content{
 //  position: relative;
     margin-top:10%;
-    width:32%;
+    width:80%;
 //    margin:5px auto;
     margin-left: auto;
     margin-right:auto;
-    align-content:center;
+//    align:center;
     text-align:center;
 //    vertical-align:middle;
 }
@@ -510,4 +520,21 @@ ul.ui-grid-c{
 .ui-radio .ui-btn-inner{
   color:#000;
   text-shadow:none;
+}
+
+/*first page*/
+.ui-btn.ui-btn-up-c.ui-shadow.ui-btn-corner-all.ui-btn-inline.ui-btn-icon-right{
+  background:#C30305;
+  box-shadow:none!important;
+  border:none;
+  -webkit-border-radius: .0 !important;
+  border-radius: .0 !important;
+}
+
+.ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-inline.ui-btn-icon-right.ui-focus.ui-btn-hover-c{
+  background:#C30305;
+  box-shadow:none!important;
+  border:none;
+  -webkit-border-radius: .0 !important;
+  border-radius: .0 !important;
 }
