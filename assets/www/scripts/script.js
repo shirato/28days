@@ -38,6 +38,8 @@ $(function () {
     console.log("script end");
 });
 
+var VIEW_WIDTH = 360;
+
 var settings = new Array(0);
 var todayDate = new Date();
 var countString = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th"];
@@ -63,29 +65,29 @@ function onDeviceReady() {
 //pageinit
 $(document).on('pageinit', '#home', function () {
     console.log("home pageinit");
-    viewport(320);
+    viewport(VIEW_WIDTH);
 
     //init();
 });
 
 $(document).on('pageinit', '#calendarpage', function () {
     console.log("calendar pageinit start");
-    viewport(320);
+    viewport(VIEW_WIDTH);
 });
 
 $(document).on('pageinit', '#alarm', function () {
     console.log("alarm pageinit");
-    viewport(320);
+    viewport(VIEW_WIDTH);
 });
 
 $(document).on('pageinit', '#email', function () {
     console.log("email pageinit start");
-    viewport(320);
+    viewport(VIEW_WIDTH);
 });
 
 $(document).on('pageinit', '#settings', function () {
     console.log("settings pageinit start");
-    viewport(320);
+    viewport(VIEW_WIDTH);
 });
 
 
@@ -211,6 +213,29 @@ function fadeImage() {
 
 }
 
+function OpenCheckDialog(dayid) {
+    var date = idToDate(dayid);
+    var str = "Check this date?<br>(" + date + ")";
+    var funcstr = "checkDate('" + dayid + "');";
+    $("#checkDialog").find('h3').html(str);
+    $("#checkDialog").find('div.ui-block-a a:first-child').attr({ 'onclick': funcstr });
+    funcstr = "uncheckDate('" + dayid + "');";
+    $("#checkDialog").find('div.ui-block-b a:first-child').attr({ 'onclick': funcstr });
+    $("#checkDialog").popup("open", { positionTo: "#headercalendar" });
+}
+
+function checkDate(dayid) {
+    localStorage[dayid] = "checked";
+    var selector = "#" + dayid;
+    $(selector).css({"background-image":"url('./images/check_stamp.png')", "background-size":"100%"});
+}
+
+function uncheckDate(dayid) {
+    localStorage.removeItem(dayid);
+    var selector = "#" + dayid;
+    $(selector).css({ "background-image": "", "background-size": "" });
+}
+
 function saveMailSettings() {
     settings = JSON.parse(localStorage.settings);
     settings.alert = $("#alert").val();
@@ -251,8 +276,8 @@ function allReset() {
 
 function viewport(width) {
     var rootElement = document.documentElement;
-//    var scale = screen.width / width * 100 + "%";
-//    rootElement.style.zoom = scale;
+    var scale = screen.width / width * 100 + "%";
+    rootElement.style.zoom = scale;
 }
 
 function getScreenHeight() {

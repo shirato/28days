@@ -116,6 +116,11 @@ function idForDate(date)
 	return date.getMonth() + 1 + '_' + date.getDate() + '_' + date.getFullYear();
 }
 
+function idToDate(id) {
+    var date = id.split("_");
+    return date[0] + "/" + date[1];
+}
+
 function recalculateHeight(itemId)
 {
 	var item = document.getElementById(itemId);
@@ -177,7 +182,7 @@ function generateDay(day, date)
 	if (isSunday) day.className += ' sunday';
 
 	day.id = idForDate(date);
-	day.innerHTML = '<span><a href="#checkDialog" data-rel="popup" data-position-to="#headercalendar" data-role="button">' + date.getDate() + '</a></span>';
+	day.innerHTML = '<span><a href="" data-role="button" onclick="OpenCheckDialog(\'' + day.id + '\');">' + date.getDate() + '</a></span>';
 
 	if (localStorage[day.id]) {
 	    day.style.backgroundImage = "url('./images/check_stamp.png')";
